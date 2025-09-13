@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Haneen Shawky</title>
+
+<!-- Google Fonts: Fraunces -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&display=swap" rel="stylesheet" />
+
+<style>
+  body {
+    font-family: 'Fraunces', serif;
+    background: linear-gradient(135deg, #2b0040, #b266ff);
+    color: #f5e6ff;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #2b0040;
+    color: #ffffff;
+    text-align: center;
+    padding: 2rem 1rem;
+    animation: fadeIn 1.5s ease-in;
+  }
+
+  nav {
+    background: linear-gradient(135deg, #4b0082, #b266ff);
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  nav a {
+    color: #f8eaff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    color: #ffffff;
+  }
+
+  section {
+    padding: 2rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1, h2, h3 {
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .project {
+    background-color: rgba(43, 0, 64, 0.8);
+    border: 1px solid #b266ff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    transition: transform 0.3s;
+  }
+
+  .project:hover {
+    transform: scale(1.02);
+  }
+
+  .project a {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #ffddff;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .skills {
+    background-color: rgba(43, 0, 64, 0.8);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .why-choose {
+    background-color: rgba(43, 0, 64, 0.8);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem auto;
+    border: 1px solid #b266ff;
+  }
+
+  .why-choose ul {
+    padding-left: 1.5rem;
+  }
+
+  .why-choose li {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .call-to-action {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 2rem 1rem;
+    color: #ffddff;
+    line-height: 1.4;
+  }
+
+  .resume-btn {
+    display: inline-block;
+    margin: 1rem auto 2rem;
+    background: #bb86fc;
+    color: #0d0d0d;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.3s;
+    text-align: center;
+  }
+
+  .resume-btn:hover,
+  .resume-btn:focus {
+    background: #f5e6ff;
+  }
+
+  #contact {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    padding: 1rem 1.5rem;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+
+  #contact a {
+    color: #ffddff;
+    text-decoration: underline;
+    word-break: break-word;
+  }
+
+  .thank-you {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    color: #ffffff;
+  }
+
+  footer {
+    background-color: #2b0040;
+    color: #f5e6ff;
+    text-align: center;
+    padding: 1rem 1rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+  }
+
+  .modal-content {
+    background-color: #2b0040;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #b266ff;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .close {
+    color: #f5e6ff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .close:hover {
+    color: #ffffff;
+  }
+
+  .code-container {
+    background-color: #1a0026;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-top: 15px;
+    position: relative;
+  }
+
+  pre {
+    margin: 0;
+    color: #f5e6ff;
+    font-family: monospace;
+    white-space: pre-wrap;
+    line-height: 1.4;
+  }
+
+  .image-placeholder {
+    background-color: rgba(178, 102, 255, 0.2);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+    border-radius: 5px;
+    border: 1px dashed #b266ff;
+  }
+
+  /* Output styles */
+  .output-container {
+    background-color: #0d0d0d;
+    color: #f5e6ff;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    line-height: 1.4;
+  }
+
+  .output-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #bb86fc;
+  }
+
+  .quotes-output-image {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 15px;
+    border: 1px solid #b266ff;
+    max-height: 400px;
+    object-fit: contain;
+  }
+
+  .image-note {
+    text-align: center;
+    font-style: italic;
+    margin-top: 8px;
+    color: #bb86fc;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 600px) {
+    nav a {
+      display: block;
+      margin: 12px 0;
+      font-size: 1.3rem;
+    }
+    section {
+      padding: 1rem;
+    }
+    .modal-content {
+      width: 95%;
+      margin: 10% auto;
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Haneen Shawky</h1>
+    <p>Cybersecurity & Penetration Testing Professional</p>
+  </header>
+
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#skills">Skills</a>
+    <a href="#why-choose">Why Choose Me</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I don't just test systems — I think like the attacker who's trying to break them. Every vulnerability I find is a door I close before the wrong hands can open it. In a world where threats evolve daily, I combine technical skill with creative problem-solving to stay two steps ahead. I believe security isn't just protection — it's the power to be unstoppable. Everyone wants to feel confident that their personal data is out of reach from anyone who shouldn't have it — and that's exactly what I deliver.</p>
+  </section>
+
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+    <p><strong>Languages:</strong> C++, Python, JavaScript, Dart</p>
+    <p><strong>Security Tools:</strong> Nmap, Burp Suite, Metasploit, Hydra, Wireshark</p>
+    <p><strong>Frameworks:</strong> Flutter, REST APIs</p>
+    <p><strong>Other:</strong> Secure coding, Vulnerability assessment, API security</p>
+  </section>
+
+  <section id="why-choose" class="why-choose">
+    <h2>Why Choose Me</h2>
+    <p>When you work with me, you're not just hiring a cybersecurity expert—you're gaining a dedicated partner in protecting your digital assets. Here's what sets me apart:</p>
+    <ul>
+      <li><strong>24/7 Availability:</strong> I understand that security issues don't wait for business hours. I'm available within the first 24 hours of any security incident and provide prompt responses to urgent matters.</li>
+      <li><strong>Proactive Approach:</strong> I don't just fix problems—I anticipate them. My methodology focuses on preventing breaches before they happen.</li>
+      <li><strong>Clear Communication:</strong> I translate complex security concepts into understandable terms, ensuring you're informed and empowered to make decisions.</li>
+      <li><strong>Continuous Learning:</strong> The cybersecurity landscape evolves rapidly, and I stay ahead of emerging threats through ongoing education and training.</li>
+      <li><strong>Customized Strategies:</strong> I develop tailored security solutions that align with your specific business needs and risk profile.</li>
+    </ul>
+  </section>
+
+  <div style="text-align:center;">
+    <a href="Haneen-Shawky.pdf" class="resume-btn" download>📄 Download Portfolio</a>
+  </div>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <h3>Multithreaded Smart Elevator Simulator (C++)</h3>
+      <p>Designed and optimized a concurrent elevator control system with resource scheduling and race-condition prevention — demonstrating secure architecture design in multithreaded environments.</p>
+      <a class="view-code" data-code="elevator-code">View Code</a>
+    </div>
+    <div class="project">
+      <h3>Digital Egypt Pioneers Initiative Labs (Penetration Testing Track)</h3>
+      <p>Hands-on penetration testing training including reconnaissance, exploitation, and vulnerability assessment.</p>
+      <a href="#">View Details</a>
+    </div>
+    <div class="project">
+      <h3>Online Shopping Cart (C++)</h3>
+      <p>Developed a functional e-commerce shopping cart system; analyzed and tested for vulnerabilities like SQL injection.</p>
+      <a class="view-code" data-code="shopping-cart-code">View Code</a>
+    </div>
+    <div class="project">
+      <h3>World Timer App (Flutter + REST API)</h3>
+      <p>Created a mobile app integrating real-time REST APIs; evaluated endpoints for security and input validation.</p>
+      <a href="#">Live Demo</a>
+    </div>
+    <div class="project">
+      <h3>Quotes Mobile App (Flutter)</h3>
+      <p>Built an interactive mobile app with XSS prevention and secure local storage handling.</p>
+      <a class="view-code" data-code="quotes-code">View Code</a>
+    </div>
+  </section>
+
+  <!-- Code Modals -->
+  <div id="elevator-code" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Multithreaded Smart Elevator Simulator (C++)</h2>
+      <p>This C++ implementation demonstrates a multithreaded elevator system with intelligent dispatching.</p>
+      
+      
+      <div class="code-container">
+        <pre>#include &lt;iostream&gt;
+#include &lt;thread&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;mutex&gt;
+#include &lt;condition_variable&gt;
+#include &lt;memory&gt;
+#include &lt;chrono&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+using Clock = chrono::steady_clock;
+
+// A single elevator request
+struct Request {
+    int sourceFloor;
+    int destFloor;
+    Clock::time_point timestamp;
+};
+
+// Elevator class — one thread per elevator
+class Elevator {
+public:
+    Elevator(int buildingId, int elevatorId)
+        : buildingId(buildingId), elevatorId(elevatorId), currentFloor(1), running(true) {}
+
+    void start() {
+        thr = thread(&Elevator::run, this);
+    }
+
+    void assign(Request req) {
+        lock_guard&lt;mutex&gt; lk(mtx);
+        tasks.push(req);
+        cv.notify_one();
+    }
+
+    void stop() {
+        {
+            lock_guard&lt;mutex&gt; lk(mtx);
+            running = false;
+            cv.notify_one();
+        }
+        thr.join();
+    }
+
+    int getCurrentFloor() {
+        lock_guard&lt;mutex&gt; lk(mtx);
+        return currentFloor;
+    }
+
+private:
+    int buildingId;
+    int elevatorId;
+    int currentFloor;
+    bool running;
+    queue&lt;Request&gt; tasks;
+    mutex mtx;
+    condition_variable cv;
+    thread thr;
+
+    void run() {
+        while (true) {
+            unique_lock&lt;mutex&gt; lk(mtx);
+            cv.wait(lk, [&] { return !tasks.empty() || !running; });
+            if (!running && tasks.empty()) break;
+
+            Request r = tasks.front(); tasks.pop();
+            lk.unlock();
+
+            auto start = Clock::now();
+            moveTo(r.sourceFloor);
+            log("Pick up at");
+            moveTo(r.destFloor);
+            log("Drop off at");
+            auto end = Clock::now();
+            auto ms = chrono::duration_cast&lt;chrono::milliseconds&gt;(end - r.timestamp).count();
+            logDuration(ms);
+        }
+    }
+
+    void moveTo(int target) {
+        while (currentFloor != target) {
+            this_thread::sleep_for(chrono::milliseconds(200));
+            currentFloor += (currentFloor &lt; target ? 1 : -1);
+            log("Passing");
+        }
+    }
+
+    void log(const char* action) {
+        static mutex coutMtx;
+        lock_guard&lt;mutex&gt; lk(coutMtx);
+        cout &lt;&lt; "[B" &lt;&lt; buildingId &lt;&lt; "-E" &lt;&lt; elevatorId &lt;&lt; "] "
+            &lt;&lt; action &lt;&lt; " " &lt;&lt; currentFloor &lt;&lt; "\n";
+    }
+
+    void logDuration(long ms) {
+        static mutex coutMtx;
+        lock_guard&lt;mutex&gt; lk(coutMtx);
+        cout &lt;&lt; "[B" &lt;&lt; buildingId &lt;&lt; "-E" &lt;&lt; elevatorId &lt;&lt; "] "
+            &lt;&lt; "Request time: " &lt;&lt; ms &lt;&lt; " ms\n";
+    }
+};
+
+// Building with dispatcher and elevators
+class Building {
+public:
+    Building(int id, int numElev) : id(id), running(true) {
+        for (int i = 0; i &lt; numElev; i++)
+            elevators.push_back(make_shared&lt;Elevator&gt;(id, i));
+    }
+
+    // Called in batch phase
+    void collect(Request req) {
+        lock_guard&lt;mutex&gt; lk(mtx);
+        req.timestamp = Clock::now();
+        reqQ.push(req);
+    }
+
+    // Start dispatcher + elevators
+    void execute() {
+        for (auto& e : elevators) e-&gt;start();
+        disp = thread(&Building::dispatch, this);
+    }
+
+    // Stop everything
+    void shutdown() {
+        {
+            lock_guard&lt;mutex&gt; lk(mtx);
+            running = false;
+            cv.notify_one();
+        }
+        disp.join();
+        for (auto& e : elevators) e-&gt;stop();
+    }
+
+private:
+    int id;
+    bool running;
+    queue&lt;Request&gt; reqQ;
+    mutex mtx;
+    condition_variable cv;
+    vector&lt;shared_ptr&lt;Elevator&gt;&gt; elevators;
+    thread disp;
+
+    // Dispatcher thread fn
+    void dispatch() {
+        while (true) {
+            unique_lock&lt;mutex&gt; lk(mtx);
+            if (reqQ.empty() && !running) break;
+            if (reqQ.empty()) {
+                cv.wait_for(lk, chrono::milliseconds(100));
+                continue;
+            }
+            Request r = reqQ.front(); reqQ.pop();
+            lk.unlock();
+
+            auto best = *min_element(elevators.begin(), elevators.end(),
+                [&] (auto& a, auto& b) {
+                    return abs(a-&gt;getCurrentFloor() - r.sourceFloor)
+                        &lt; abs(b-&gt;getCurrentFloor() - r.sourceFloor);
+                });
+            best-&gt;assign(r);
+        }
+    }
+};
+
+int main() {
+    cout &lt;&极; "Enter number of buildings and floors per building:\n";
+    int NUM_BUILDINGS, FLOORS_PER_BUILDING;
+    cin &gt;&gt; NUM_BUILDINGS &gt;&gt; FLOORS_PER_BUILDING;
+
+    vector&lt;shared_ptr&lt;Building&gt;&gt; buildings;
+    for (int i = 0; i &lt; NUM_BUILDINGS; i++)
+        buildings.push_back(make_shared&lt;Building&gt;(i, 1));
+
+    cout &lt;&lt; "Enter requests: &lt;building&gt; &lt;source&gt; &lt;dest&gt;, -极 to end input\n";
+    while (true) {
+        int b; cin &gt;&gt; b;
+        if (b == -1) break;
+        int s, d; cin &gt;&gt; s &gt;&gt; d;
+        if (b &lt; 0 || b &gt;= NUM_BUILDINGS || s &lt; 1 || s &gt; FLOORS_PER_BUILDING || d &lt; 1 || d &gt; FLOORS_PER_BUILDING) {
+            cout &lt;&lt; "Invalid input\n";
+            continue;
+        }
+        buildings[b]-&gt;collect({ s, d, Clock::now() });
+    }
+
+    auto simStart = Clock::now();
+    for (auto& b : buildings) b-&gt;execute();
+    for (auto& b : buildings) b-&gt;shutdown();
+    auto simEnd = Clock::now();
+
+    auto totalMs = chrono::duration_cast&lt;chrono::milliseconds&gt;(simEnd - simStart).count();
+    cout &lt;&lt; "Total simulation time: " &lt;&lt; totalMs &lt;&lt; " ms\n";
+    return 0;
+}</pre>
+      </div>
+      
+      <div class="output-title">Sample Output:</div>
+      <div class="output-container">Enter number of buildings and floors per building:
+10 10
+Enter requests: &lt;building&gt; &lt;source&gt; &lt;dest&gt;, -1 to end input
+5 2 8
+-1
+[B5-E0] Passing 2
+[B5-E0] Pick up at 2
+[B5-E0] Passing 3
+[B5-E0] Passing 4
+[B5-E0] Passing 5
+[B5-E0] Passing 6
+[B5-E0] Passing 7
+[B5极0] Passing 8
+[B5-E0] Drop off at 8
+[B5-E0] Request time: 3962 ms
+Total simulation time: 1545 ms</div>
+      
+   
+    </div>
+  </div>
+
+  <div id="shopping-cart-code" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Online Shopping Cart (C++)</h2>
+      <p>This C++ implementation demonstrates a simple shopping cart system using a stack data structure.</p>
+      
+      
+      
+      <div class="code-container">
+        <pre>#include &lt;iostream&gt; 
+#include &lt;string&gt; 
+using namespace std; 
+ 
+struct Node { 
+    string data;  
+    Node* next; 
+}; 
+ 
+Node* top = NULL; 
+ 
+void addItem( string item) { 
+    Node* newNode = new Node; 
+    newNode-&gt;data = item; 
+    newNode-&gt;next = top; 
+    top = newNode; 
+    cout &lt;&lt; "Added \"" &lt;&lt; item &lt;&lt; "\" to the cart." &lt;&lt; endl; 
+} 
+ 
+ 
+void removeItem() { 
+    if (top == nullptr) { 
+        cout &lt;&lt; "The cart is empty. No items to remove." &lt;&lt; endl; 
+    } 
+    else { 
+        Node* lastitem = top; 
+        top = top-&gt;next; 
+        cout &lt;&lt; "Removed \"" &lt;&lt; lastitem-&gt;data &lt;&lt; "\" from the cart." &lt;&lt; endl; 
+        delete lastitem; 
+    } 
+} 
+ 
+ 
+string peek()极 { 
+    if (top == nullptr) { 
+        cout &lt;&lt; "The cart is empty." &lt;&lt; endl; 
+        return ""; 
+    } 
+    return top-&gt;data; 
+} 
+ 
+ 
+void checkout() { 
+    if (top == nullptr) { 
+        cout &lt;&lt; "The cart is already empty." &lt;&lt; endl; 
+    } 
+    else { 
+        cout &lt;&lt; "Checking out. The following items are in your cart:" &lt;&lt; endl; 
+        while (top != nullptr) { 
+            cout &lt;&lt; "- " &lt;&lt; peek() &lt;&lt; endl; 
+            removeItem(); 
+        } 
+        cout &lt;&lt; "Your cart is now empty." &lt;&lt; endl; 
+    } 
+} 
+ 
+ 
+int main() { 
+    int choice; 
+    string item; 
+ 
+    do { 
+        cout &lt;&lt; "\nOnline Shopping Cart Menu:\n"; 
+        cout &lt;&lt; "1. Add Item\n"; 
+        cout &lt;&lt; "2. Remove Item\n"; 
+        cout &lt;&lt; "3. Checkout\n"; 
+        cout &lt;&lt; "4. Exit\n"; 
+        cout &lt;&lt; "Enter your choice: "&lt;&lt;endl; 
+        cin &gt;&gt; choice; 
+ 
+        switch (choice) { 
+        case 1: 
+            cout &lt;&lt; "Enter the item to add: " &lt;&lt; endl; 
+            cin.ignore();  
+            getline(cin, item);  
+极           addItem(item); 
+            break; 
+        case 2: 
+            removeItem(); 
+            break; 
+        case 3: 
+            checkout(); 
+            break; 
+        case 4: 
+            cout &lt;&lt; "极iting the shopping cart system. Goodbye!" &lt;&lt; endl; 
+            break; 
+        default: 
+            cout &lt;&lt; "Invalid choice. Please try again." &lt;&lt; endl; 
+        } 
+    } while (choice != 4); 
+ 
+    return 0; 
+}</pre>
+      </div>
+      
+      <div class="output-title">Sample Output:</div>
+      <div class="output-container">The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+Moamens-MacBook:- moamenelshemy$ /Users/moamenelshemy/ClionProjects/untitled4/cm
+ake-build-debug/untitled4 ; exit;
+
+Online Shopping Cart Menu:
+1. Add Item
+2. Remove Item
+3. Checkout
+4. Exit
+Enter your choice:
+1
+Enter the item to add:
+shoes
+Added "shoes" to the cart.
+
+Online Shopping Cart Menu:
+1. Add Item
+2. Remove Item
+3. Checkout
+4. Exit
+Enter your choice:</div>
+      
+      
+    </div>
+  </div>
+
+  <div id="quotes-code" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Quotes Mobile App (Flutter)</极>
+      <p>This Flutter implementation demonstrates a mobile app for displaying inspirational quotes with secure storage handling.</p>
+      
+      <div class="code-container">
+        <pre>import 'dart:async';
+import 'dart:collection';
+import 'package:flutter/material.dart';
+import 'dart:math';
+
+void main() {
+  runApp(ElevatorApp());
+}
+
+class ElevatorApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: ElevatorHome(),
+    );
+  }
+}
+
+class Request {
+  final int source;
+  final int dest;
+  final DateTime timestamp;
+  Request(this.source, this.dest) : timestamp = DateTime.now();
+}
+
+class Elevator {
+  final int buildingId;
+  final int elevatorId;
+  int currentFloor = 1;
+  final Queue&lt;Request&gt; tasks = Queue();
+  bool running = true;
+  final ValueNotifier&lt;String&gt; logNotifier;
+
+  Elevator(this.buildingId, this.elevator极, this.logNotifier);
+
+  void assign(Request r) {
+    tasks.add(r);
+    if (!_isRunning) run();
+  }
+
+  bool _isRunning = false;
+
+  void run() async {
+    _isRunning = true;
+    while (tasks.isNotEmpty) {
+      Request r = tasks.removeFirst();
+      await moveTo(r.source);
+      log("Pick up at");
+      await moveTo(r.dest);
+      log("Drop off at");
+      final ms = DateTime.now().difference(r.timestamp).inMilliseconds;
+      log("Request time: $ms ms");
+    }
+    _isRunning = false;
+  }
+
+  Future&lt;void&gt; moveTo(int target) async {
+    while (currentFloor != target) {
+      await Future.delayed(Duration(milliseconds: 200));
+      currentFloor += (currentFloor &lt; target ? 1 : -1);
+      log("Passing");
+    }
+  }
+
+  void log(String action) {
+    logNotifier.value += "[B$buildingId-E$elevatorId] $action $currentFloor\n";
+  }
+}
+
+class Building {
+  final int id;
+  final List&lt;Elevator&gt; elevators;
+  final Queue&lt;Request&gt; reqQ = Queue();
+  final ValueNotifier&lt;String&gt; logNotifier;
+
+  Building(this.id, int numElevators, this.logNotifier)
+      : elevators = List.generate(
+      numElevators, (i) =&gt; Elevator(id, i, logNotifier));
+
+  void collect(Request req) {
+    reqQ.add(req);
+  }
+
+  void execute() async {
+    while (reqQ.isNotEmpty) {
+      Request r = reqQ.removeFirst();
+      Elevator best = elevators.reduce((a, b) =&gt;
+      (r.source - a.currentFloor).abs() &lt; (r.source - b.currentFloor).abs()
+          ? a
+          : b);
+      best.assign(r);
+      await Future.delayed(Duration(milliseconds: 100));
+    }
+  }
+}
+
+class ElevatorHome extends StatefulWidget {
+  @override
+  _ElevatorHomeState createState() =&gt; _ElevatorHomeState();
+}
+
+class _ElevatorHomeState extends State&lt;ElevatorHome&gt; {
+  final logNotifier = ValueNotifier&lt;String&gt;("");
+  final List&lt;Building&gt; buildings = [];
+  final TextEditingController buildingController = TextEditingController();
+  final TextEditingController floorController = TextEditingController();
+  int numBuildings = 0;
+  int floorsPerBuilding = 0;
+
+  void setupBuildings() {
+    numBuildings = int.tryParse(buildingController.text) ?? 1;
+    floorsPerBuilding = int.tryParse(floorController.text) ?? 10;
+    buildings.clear();
+    for (int i = 0; i &lt; numBuildings; i++) {
+      buildings.add(Building(i, 1, logNotifier));
+    }
+  }
+
+  void simulate() async {
+    final simStart = DateTime.now();
+    for (var b in buildings) {
+      b.execute();
+    }
+    await Future.delayed(Duration(seconds: 2));
+    final simEnd = DateTime.now();
+    final totalMs = simEnd.difference(simStart).inMilliseconds;
+    logNotifier.value += "Total simulation time: $totalMs ms\n";
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Elevator Simulation")),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: buildingController,
+              decoration: InputDecoration(labelText: 'Number of Buildings'),
+              keyboardType: TextInputType.number,
+            ),
+            TextField(
+              controller: floorController,
+              decoration: InputDecoration(labelText: 'Floors per Building'),
+              keyboardType: TextInputType.number,
+            ),
+            ElevatedButton(
+              onPressed: setupBuildings,
+              child: Text('Initialize'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Add sample requests
+                buildings[0].collect(Request(1, 5));
+                buildings[0].collect(Request(3, 1));
+                simulate();
+              },
+              child: Text("Start Simulation"),
+            ),
+            Expanded(
+              child: ValueListenableBuilder&lt;String&gt;(
+                valueListenable: logNotifier,
+                builder: (context, log, _) =&gt; SingleChildScrollView(
+                  child: Text(log),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}</pre>
+      </div>
+      
+      <div class="output-title">App Screenshot:</div>
+      
+      <!-- REPLACE THIS IMAGE TAG WITH YOUR ACTUAL IMAGE -->
+      <!-- 
+        1. Save your image in the same folder as this HTML file
+        2. Rename it to "quotes-app-screenshot.jpg" 
+        3. Make sure the filename matches exactly what's in the src attribute below
+      -->
+      <img src="quotes-app-screenshot.jpg" alt="Quotes App Screenshot" class="quotes-output-image">
+      
+   
+      
+        </div>
+  </div>
+
+  <div class="call-to-action">
+    Secure your army with the unbeatable cyber soldier
+  </div>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/haneen-sherif" target="_blank" rel="noopener noreferrer">haneen-sherif</a></p>
+    <p>Phone: <a href="tel:+201094410500">+20 109 441 0500</a></p>
+    <p>Email: <a href="mailto:hanensherif2016@gmail.com">hanensherif2016@gmail.com</a></p>
+  </section>
+
+  <div class="thank-you">THANK YOU</div>
+
+  <footer>
+    <p>© 2025 My Portfolio. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Modal functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const modalTriggers = document.querySelectorAll('.view-code');
+      const modals = document.querySelectorAll('.modal');
+      const closeButtons = document.querySelectorAll('.close');
+      
+      // Open modal when clicking on view code links
+      modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+          const modalId = this.getAttribute('data-code');
+          const modal = document.getElementById(modalId);
+          if (modal) {
+            modal.style.display = 'block';
+          }
+        });
+      });
+      
+      // Close modal when clicking on close button
+      closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const modal = this.closest('.modal');
+          if (modal) {
+            modal.style.display = 'none';
+          }
+        });
+      });
+      
+      // Close modal when clicking outside of modal content
+      window.addEventListener('click', function(event) {
+        modals.forEach(modal => {
+          if (event.target === modal) {
+            modal.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
